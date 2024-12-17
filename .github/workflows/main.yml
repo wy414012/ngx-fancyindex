@@ -14,7 +14,12 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v4
-        
+      - uses: actions/checkout@v4
+        with:
+          repository: nginx/nginx
+          path: ./nginx
+          ref: master
+
       - name: Update apt
         run: sudo apt-get update
 
@@ -22,7 +27,6 @@ jobs:
         run: |
          sudo apt-get install -y \
          libssl-dev \
-         cmake \
          lsb-release \
          libxml2-utils \
          xsltproc \
@@ -40,16 +44,10 @@ jobs:
          libunwind-dev \
          pkg-config \
          make \
-         cmake \
-         golang \
-         gcc \
-         git \
-         wget
+         gcc 
          
       - name: wget repo
         run: |
-          wget -c https://nginx.org/download/nginx-1.27.3.tar.gz && \
-          tar -xvf nginx-1.27.3.tar.gz && \
           cd nginx-1.27.3 && \
           ./configure --add-module=../ && \
           make

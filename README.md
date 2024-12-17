@@ -113,22 +113,22 @@ location / {
 #### 指令
 
 | 指令 | 语法 | 默认值 | 上下文 | 描述 |
-| --- | --- | --- | --- | --- |
-| `fancyindex` | `fancyindex` [on | off] | `fancyindex off` | http, server, location | 启用或禁用 fancy 目录索引。 |
-| `fancyindex_default_sort` | `fancyindex_default_sort` [name | size | date | name_desc | size_desc | date_desc] | `fancyindex_default_sort name` | http, server, location | 定义默认的排序标准。 |
-| `fancyindex_directories_first` | `fancyindex_directories_first` [on | off] | `fancyindex_directories_first on` | http, server, location | 如果启用（默认设置），将目录分组并在所有普通文件之前排序。如果禁用，目录将与文件一起排序。 |
-| `fancyindex_css_href` | `fancyindex_css_href uri` | `fancyindex_css_href ""` | http, server, location | 允许在生成的列表中插入链接到 CSS 样式表。提供的 `uri` 参数将原样插入到 `<link>` HTML 标签中。链接插入在内置 CSS 规则之后，因此您可以覆盖默认样式。 |
-| `fancyindex_exact_size` | `fancyindex_exact_size` [on | off] | `fancyindex_exact_size on` | http, server, location | 定义如何表示目录列表中的文件大小；准确表示或四舍五入到千字节、兆字节和吉字节。 |
-| `fancyindex_name_length` | `fancyindex_name_length length` | `fancyindex_name_length 50` | http, server, location | 定义文件名的最大长度限制（以字节为单位）。 |
-| `fancyindex_footer` | `fancyindex_footer path` [subrequest | local] | `fancyindex_footer ""` | http, server, location | 指定应插入到目录列表底部的文件。如果设置为空字符串，则发送模块提供的默认页脚。可选参数指示 `path` 是否应被视为使用子请求加载的 URI（默认），或是否引用本地文件。 |
-| `fancyindex_header` | `fancyindex_header path` [subrequest | local] | `fancyindex_header ""` | http, server, location | 指定应插入到目录列表顶部的文件。如果设置为空字符串，则发送模块提供的默认头部。可选参数指示 `path` 是否应被视为使用子请求加载的 URI（默认），或是否引用本地文件。 |
-| `fancyindex_show_path` | `fancyindex_show_path` [on | off] | `fancyindex_show_path on` | http, server, location | 是否输出路径和关闭的 `</h1>` 标签在头部之后。当您希望使用 PHP 脚本处理路径显示时，这非常有用。 |
-| `fancyindex_show_dotfiles` | `fancyindex_show_dotfiles` [on | off] | `fancyindex_show_dotfiles off` | http, server, location | 是否列出以点开头的文件。常规做法是隐藏这些文件。 |
-| `fancyindex_ignore` | `fancyindex_ignore string1 [string2 [... stringN]]` | 无默认值 | http, server, location | 指定生成的列表中不显示的文件名列表。如果 Nginx 是使用 PCRE 支持构建的，字符串将被解释为正则表达式。 |
-| `fancyindex_hide_symlinks` | `fancyindex_hide_symlinks` [on | off] | `fancyindex_hide_symlinks off` | http, server, location | 启用后，生成的列表中将不包含符号链接。 |
-| `fancyindex_hide_parent_dir` | `fancyindex_hide_parent_dir` [on | off] | `fancyindex_hide_parent_dir off` | http, server, location | 启用后，将不显示父目录。 |
-| `fancyindex_localtime` | `fancyindex_localtime` [on | off] | `fancyindex_localtime off` | http, server, location | 启用后，显示文件时间为本地时间。默认为 GMT 时间。 |
-| `fancyindex_time_format` | `fancyindex_time_format` string | `fancyindex_time_format "%Y-%b-%d %H:%M"` | http, server, location | 用于时间戳的格式字符串。格式说明符是 `strftime` 函数支持的子集，行为与区域设置无关（例如，星期几和月份名称始终为英文）。 |
+| :---: | :---: | :---: | :---: | :---: |
+| `fancyindex` | `fancyindex` [on \| off] | `fancyindex off` | http, server, location | 用于启用或禁用 fancy 目录索引。 |
+| `fancyindex_default_sort` | `fancyindex_default_sort` [name \| size \| date \| name_desc \| size_desc \| date_desc] | `fancyindex_default_sort name` | http, server, location | 用来定义默认的排序标准。 |
+| `fancyindex_directories_first` | `fancyindex_directories_first` [on \| off] | `fancyindex_directories_first on` | http, server, location | 若启用（为默认设置），会将目录分组，并在所有普通文件之前排序；若禁用，目录将与文件一起排序。 |
+| `fancyindex_css_href` | `fancyindex_css_href uri` | `fancyindex_css_href ""` | http, server, location | 允许在生成的列表中插入链接到 CSS 样式表。提供的 `uri` 参数会原样插入到 `<link>` HTML 标签中，链接插入在内置 CSS 规则之后，以便覆盖默认样式。 |
+| `fancyindex_exact_size` | `fancyindex_exact_size` [on \| off] | `fancyindex_exact_size on` | http, server, location | 定义在目录列表中表示文件大小的方式，可选准确表示，或四舍五入到千字节、兆字节和吉字节。 |
+| `fancyindex_name_length` | `fancyindex_name_length length` | `fancyindex_name_length 50` | http, server, location | 定义文件名的最大长度限制，单位为字节。 |
+| `fancyindex_footer` | `fancyindex_footer path` [subrequest \| local] | `fancyindex_footer ""` | http, server, location | 指定应插入到目录列表底部的文件。若设为空字符串，则发送模块提供默认页脚。可选参数指示 `path` 是否应被当作使用子请求加载的 URI（默认情况），还是引用本地文件。 |
+| `fancyindex_header` | `fancyindex_header path` [subrequest \| local] | `fancyindex_header ""` | http, server, location | 指定应插入到目录列表顶部的文件。若设为空字符串，则发送模块提供默认头部。可选参数指示 `path` 是否应被当作使用子请求加载的 URI（默认情况），还是引用本地文件。 |
+| `fancyindex_show_path` | `fancyindex_show_path` [on \| off] | `fancyindex_show_path on` | http, server, location | 决定是否在头部之后输出路径和关闭的 `</h1>` 标签，当希望用 PHP 脚本处理路径显示时很有用。 |
+| `fancyindex_show_dotfiles` | `fancyindex_show_dotfiles` [on \| off] | `fancyindex_show_dotfiles off` | http, server, location | 确定是否列出以点开头的文件，常规做法是隐藏这些文件。 |
+| `fancyindex_ignore` | `fancyindex_ignore string1 [string2 [... stringN]]` | 无默认值 | http, server, location | 指定在生成的列表中不显示的文件名列表。若 Nginx 是用 PCRE 支持构建的，字符串会被解释为正则表达式。 |
+| `fancyindex_hide_symlinks` | `fancyindex_hide_symlinks` [on \| off] | `fancyindex_hide_symlinks off` | http, server, location | 启用后，生成的列表中将不包含符号链接。 |
+| `fancyindex_hide_parent_dir` | `fancyindex_hide_parent_dir` [on \| off] | `fancyindex_hide_parent_dir off` | http, server, location | 启用后，不显示父目录。 |
+| `fancyindex_localtime` | `fancyindex_localtime` [on \| off] | `fancyindex_localtime off` | http, server, location | 启用后，文件时间显示为本地时间，默认是 GMT 时间。 |
+| `fancyindex_time_format` | `fancyindex_time_format` string | `fancyindex_time_format "%Y-%b-%d %H:%M"` | http, server, location | 用于时间戳的格式字符串，格式说明符是 `strftime` 函数支持的子集，其行为与区域设置无关（例如，星期几和月份名称始终为英文）。 |
 
 **支持的时间格式说明符：**
 

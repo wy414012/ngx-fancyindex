@@ -46,8 +46,8 @@ jobs:
          make \
          gcc 
          
-      - name: wget repo
+      - name: run make
         run: |
           cd nginx && \
-          ./configure --add-module=../ && \
+          ./auto/configure --add-module=../ && \
           make

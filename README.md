@@ -110,27 +110,99 @@ location / {
 - [主题](https://github.com/fraoustin/Nginx-Fancyindex-Theme) 由 @fraoustin 提供。使用 Material Design 元素的响应式主题。
 - [主题](https://github.com/alehaa/nginx-fancyindex-flat-theme) 由 @alehaa 提供。基于 Bootstrap 4 和 FontAwesome 的简单扁平主题。
 
-#### 指令
+## 指令
 
-| 指令 | 语法 | 默认值 | 上下文 | 描述 |
-| :---: | :---: | :---: | :---: | :---: |
-| `fancyindex` | `fancyindex` [on \| off] | `fancyindex off` | http, server, location | 用于启用或禁用 fancy 目录索引。 |
-| `fancyindex_default_sort` | `fancyindex_default_sort` [name \| size \| date \| name_desc \| size_desc \| date_desc] | `fancyindex_default_sort name` | http, server, location | 用来定义默认的排序标准。 |
-| `fancyindex_directories_first` | `fancyindex_directories_first` [on \| off] | `fancyindex_directories_first on` | http, server, location | 若启用（为默认设置），会将目录分组，并在所有普通文件之前排序；若禁用，目录将与文件一起排序。 |
-| `fancyindex_css_href` | `fancyindex_css_href uri` | `fancyindex_css_href ""` | http, server, location | 允许在生成的列表中插入链接到 CSS 样式表。提供的 `uri` 参数会原样插入到 `<link>` HTML 标签中，链接插入在内置 CSS 规则之后，以便覆盖默认样式。 |
-| `fancyindex_exact_size` | `fancyindex_exact_size` [on \| off] | `fancyindex_exact_size on` | http, server, location | 定义在目录列表中表示文件大小的方式，可选准确表示，或四舍五入到千字节、兆字节和吉字节。 |
-| `fancyindex_name_length` | `fancyindex_name_length length` | `fancyindex_name_length 50` | http, server, location | 定义文件名的最大长度限制，单位为字节。 |
-| `fancyindex_footer` | `fancyindex_footer path` [subrequest \| local] | `fancyindex_footer ""` | http, server, location | 指定应插入到目录列表底部的文件。若设为空字符串，则发送模块提供默认页脚。可选参数指示 `path` 是否应被当作使用子请求加载的 URI（默认情况），还是引用本地文件。 |
-| `fancyindex_header` | `fancyindex_header path` [subrequest \| local] | `fancyindex_header ""` | http, server, location | 指定应插入到目录列表顶部的文件。若设为空字符串，则发送模块提供默认头部。可选参数指示 `path` 是否应被当作使用子请求加载的 URI（默认情况），还是引用本地文件。 |
-| `fancyindex_show_path` | `fancyindex_show_path` [on \| off] | `fancyindex_show_path on` | http, server, location | 决定是否在头部之后输出路径和关闭的 `</h1>` 标签，当希望用 PHP 脚本处理路径显示时很有用。 |
-| `fancyindex_show_dotfiles` | `fancyindex_show_dotfiles` [on \| off] | `fancyindex_show_dotfiles off` | http, server, location | 确定是否列出以点开头的文件，常规做法是隐藏这些文件。 |
-| `fancyindex_ignore` | `fancyindex_ignore string1 [string2 [... stringN]]` | 无默认值 | http, server, location | 指定在生成的列表中不显示的文件名列表。若 Nginx 是用 PCRE 支持构建的，字符串会被解释为正则表达式。 |
-| `fancyindex_hide_symlinks` | `fancyindex_hide_symlinks` [on \| off] | `fancyindex_hide_symlinks off` | http, server, location | 启用后，生成的列表中将不包含符号链接。 |
-| `fancyindex_hide_parent_dir` | `fancyindex_hide_parent_dir` [on \| off] | `fancyindex_hide_parent_dir off` | http, server, location | 启用后，不显示父目录。 |
-| `fancyindex_localtime` | `fancyindex_localtime` [on \| off] | `fancyindex_localtime off` | http, server, location | 启用后，文件时间显示为本地时间，默认是 GMT 时间。 |
-| `fancyindex_time_format` | `fancyindex_time_format` string | `fancyindex_time_format "%Y-%b-%d %H:%M"` | http, server, location | 用于时间戳的格式字符串，格式说明符是 `strftime` 函数支持的子集，其行为与区域设置无关（例如，星期几和月份名称始终为英文）。 |
+### `fancyindex`
+- **语法**: `fancyindex` [on \| off]
+- **默认值**: `fancyindex off`
+- **上下文**: http, server, location
+- **描述**: 用于启用或禁用 fancy 目录索引。
 
-**支持的时间格式说明符：**
+### `fancyindex_default_sort`
+- **语法**: `fancyindex_default_sort` [name \| size \| date \| name_desc \| size_desc \| date_desc]
+- **默认值**: `fancyindex_default_sort name`
+- **上下文**: http, server, location
+- **描述**: 用来定义默认的排序标准。
+
+### `fancyindex_directories_first`
+- **语法**: `fancyindex_directories_first` [on \| off]
+- **默认值**: `fancyindex_directories_first on`
+- **上下文**: http, server, location
+- **描述**: 若启用（为默认设置），会将目录分组，并在所有普通文件之前排序；若禁用，目录将与文件一起排序。
+
+### `fancyindex_css_href`
+- **语法**: `fancyindex_css_href uri`
+- **默认值**: `fancyindex_css_href ""`
+- **上下文**: http, server, location
+- **描述**: 允许在生成的列表中插入链接到 CSS 样式表。提供的 `uri` 参数会原样插入到 `<link>` HTML 标签中，链接插入在内置 CSS 规则之后，以便覆盖默认样式。
+
+### `fancyindex_exact_size`
+- **语法**: `fancyindex_exact_size` [on \| off]
+- **默认值**: `fancyindex_exact_size on`
+- **上下文**: http, server, location
+- **描述**: 定义在目录列表中表示文件大小的方式，可选准确表示，或四舍五入到千字节、兆字节和吉字节。
+
+### `fancyindex_name_length`
+- **语法**: `fancyindex_name_length length`
+- **默认值**: `fancyindex_name_length 50`
+- **上下文**: http, server, location
+- **描述**: 定义文件名的最大长度限制，单位为字节。
+
+### `fancyindex_footer`
+- **语法**: `fancyindex_footer path` [subrequest \| local]
+- **默认值**: `fancyindex_footer ""`
+- **上下文**: http, server, location
+- **描述**: 指定应插入到目录列表底部的文件。若设为空字符串，则发送模块提供默认页脚。可选参数指示 `path` 是否应被当作使用子请求加载的 URI（默认情况），还是引用本地文件。
+
+### `fancyindex_header`
+- **语法**: `fancyindex_header path` [subrequest \| local]
+- **默认值**: `fancyindex_header ""`
+- **上下文**: http, server, location
+- **描述**: 指定应插入到目录列表顶部的文件。若设为空字符串，则发送模块提供默认头部。可选参数指示 `path` 是否应被当作使用子请求加载的 URI（默认情况），还是引用本地文件。
+
+### `fancyindex_show_path`
+- **语法**: `fancyindex_show_path` [on \| off]
+- **默认值**: `fancyindex_show_path on`
+- **上下文**: http, server, location
+- **描述**: 决定是否在头部之后输出路径和关闭的 `</h1>` 标签，当希望用 PHP 脚本处理路径显示时很有用。
+
+### `fancyindex_show_dotfiles`
+- **语法**: `fancyindex_show_dotfiles` [on \| off]
+- **默认值**: `fancyindex_show_dotfiles off`
+- **上下文**: http, server, location
+- **描述**: 确定是否列出以点开头的文件，常规做法是隐藏这些文件。
+
+### `fancyindex_ignore`
+- **语法**: `fancyindex_ignore string1 [string2 [... stringN]]`
+- **默认值**: 无默认值
+- **上下文**: http, server, location
+- **描述**: 指定在生成的列表中不显示的文件名列表。若 Nginx 是用 PCRE 支持构建的，字符串会被解释为正则表达式。
+
+### `fancyindex_hide_symlinks`
+- **语法**: `fancyindex_hide_symlinks` [on \| off]
+- **默认值**: `fancyindex_hide_symlinks off`
+- **上下文**: http, server, location
+- **描述**: 启用后，生成的列表中将不包含符号链接。
+
+### `fancyindex_hide_parent_dir`
+- **语法**: `fancyindex_hide_parent_dir` [on \| off]
+- **默认值**: `fancyindex_hide_parent_dir off`
+- **上下文**: http, server, location
+- **描述**: 启用后，不显示父目录。
+
+### `fancyindex_localtime`
+- **语法**: `fancyindex_localtime` [on \| off]
+- **默认值**: `fancyindex_localtime off`
+- **上下文**: http, server, location
+- **描述**: 启用后，文件时间显示为本地时间，默认是 GMT 时间。
+
+### `fancyindex_time_format`
+- **语法**: `fancyindex_time_format` string
+- **默认值**: `fancyindex_time_format "%Y-%b-%d %H:%M"`
+- **上下文**: http, server, location
+- **描述**: 用于时间戳的格式字符串，格式说明符是 `strftime` 函数支持的子集，其行为与区域设置无关（例如，星期几和月份名称始终为英文）。
+
+:::tip 支持的时间格式说明符：
 
 - `%a`: 星期几的缩写名称。
 - `%A`: 星期几的完整名称。
@@ -155,3 +227,4 @@ location / {
 - `%w`: 星期几的数字，范围 0 到 6，周一为 0。
 - `%y`: 不带世纪的年份数字（范围 00 到 99）。
 - `%Y`: 带世纪的年份数字。
+:::

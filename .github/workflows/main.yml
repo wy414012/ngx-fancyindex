@@ -48,6 +48,6 @@ jobs:
          
       - name: wget repo
         run: |
-          cd nginx-1.27.3 && \
+          cd nginx && \
           ./configure --add-module=../ && \
           make

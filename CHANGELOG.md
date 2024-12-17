@@ -1,188 +1,122 @@
-# Change Log
-All notable changes to this project will be documented in this file.
+# 变更日志
+所有对本项目的重要变更都将记录在此文件中。
 
-## [Unreleased]
+## [未发布]
 
 ## [0.5.2] - 2021-10-28
-### Fixed
-- Properly escape file names to ensure that file names are never renreded
-  as HTML. (Patch by Anthony Ryan <<anthonyryan1@gmail.com>>,
-  [#128](https://github.com/aperezdc/ngx-fancyindex/pull/128).)
+### 修复
+- 正确转义文件名以确保文件名不会被渲染为HTML。（补丁由 Anthony Ryan <<anthonyryan1@gmail.com>> 提供，[#128](https://github.com/aperezdc/ngx-fancyindex/pull/128).）
 
 ## [0.5.1] - 2020-10-26
-### Fixed
-- Properly handle optional second argument to `fancyindex_header` and
-  `fancyindex_footer`
-  ([#117](https://github.com/aperezdc/ngx-fancyindex/issues/117)).
+### 修复
+- 正确处理 `fancyindex_header` 和 `fancyindex_footer` 的可选第二个参数
+  ([#117](https://github.com/aperezdc/ngx-fancyindex/issues/117))。
 
 ## [0.5.0] - 2020-10-24
-### Added
-- New option `fancyindex_show_dotfiles`. (Path by Joshua Shaffer
-  <<joshua.shaffer@icmrl.net>>.)
-- The `fancyindex_header` and `fancyindex_footer` options now support local
-  files properly, by means of a `local` flag. (Patches by JoungKyun Kim
-  <<joungkyun@gmail.com>> and Adrián Pérez <<aperez@igalia.com>>.)
+### 增加
+- 新选项 `fancyindex_show_dotfiles`。（路径由 Joshua Shaffer <<joshua.shaffer@icmrl.net>> 提供。）
+- `fancyindex_header` 和 `fancyindex_footer` 选项现在支持通过 `local` 标志正确使用本地文件。（补丁由 JoungKyun Kim <<joungkyun@gmail.com>> 和 Adrián Pérez <<aperez@igalia.com>> 提供。）
 
-### Changed
-- Improved performance of directory entry sorting, which should be quite
-  noticeable for directories with thousands of files. (Patch by
-  [Yuxiang Zhang](https://github.com/z4yx).)
-- The minimum Nginx version supported by the module is now 0.8.x.
+### 改变
+- 改进目录条目排序的性能，对于包含数千个文件的目录应该有显著提升。（补丁由 [Yuxiang Zhang](https://github.com/z4yx) 提供。）
+- 模块支持的最低 Nginx 版本现在是 0.8.x。
 
-### Fixed
-- Properly escape square brackets in directory entry names when the module
-  is built with older versions of Nginx. (Patch by Adrián Pérez
-  <<aperez@igalia.com>>.)
-- Fix directory entry listing not being shown when using the
-  [nginx-auth-ldap](https://github.com/kvspb/nginx-auth-ldap) module. (Patch
-  by JoungKyun Kim <<joungkyun@gmail.com>>.)
+### 修复
+- 在使用旧版本 Nginx 构建模块时，正确转义目录条目名称中的方括号。（补丁由 Adrián Pérez <<aperez@igalia.com>> 提供。）
+- 修复使用 [nginx-auth-ldap](https://github.com/kvspb/nginx-auth-ldap) 模块时目录条目列表不显示的问题。（补丁由 JoungKyun Kim <<joungkyun@gmail.com>> 提供。）
 
 ## [0.4.4] - 2020-02-19
-### Added
-- New option `fancyindex_hide_parent_dir`, which disables generating
-  links to parent directories in listings. (Patch by Kawai Ryota
-  <<admin@mail.kr-kp.com>>.)
+### 增加
+- 新选项 `fancyindex_hide_parent_dir`，禁用在列表中生成父目录链接。（补丁由 Kawai Ryota <<admin@mail.kr-kp.com>> 提供。）
 
-### Changed
-- Each table row is now separated by a new line (as a matter of fact,
-  a `CRLF` sequence), which makes it easier to parse output using simple
-  text tools. (Patch by Anders Trier <<anders.trier.olesen@gmail.com>>.)
-- Some corrections and additions to the README file. (Patches by Nicolas
-  Carpi <<nicolas.carpi@curie.fr>> and David Beitey <<david@davidjb.com>>.)
+### 改变
+- 每个表格行现在用新行（实际上是 `CRLF` 序列）分隔，这使得使用简单文本工具解析输出更加容易。（补丁由 Anders Trier <<anders.trier.olesen@gmail.com>> 提供。）
+- 对 `README` 文件进行了一些修正和补充。（补丁由 Nicolas Carpi <<nicolas.carpi@curie.fr>> 和 David Beitey <<david@davidjb.com>> 提供。）
 
-### Fixed
-- Use correct character references for `&` characters in table sorter URLs
-  within the template (Patch by David Beitey <<david@davidjb.com>>.)
-- Properly encode filenames when used as URI components.
+### 修复
+- 在模板中使用正确的字符引用表示 `&` 字符。（补丁由 David Beitey <<david@davidjb.com>> 提供。）
+- 正确编码用作 URI 组件的文件名。
 
 ## [0.4.3] - 2018-07-03
-### Added
-- Table cells now have class names, which allows for better CSS styling.
-  (Patch by qjqqyy <<gyula@nyirfalvi.hu>>.)
-- The test suite now can parse and check elements from the HTML returned
-  by the module, thanks to the [pup](https://github.com/EricChiang/pup)
-  tool.
+### 增加
+- 表格单元格现在有类名，允许更好的 CSS 样式化。（补丁由 qjqqyy <<gyula@nyirfalvi.hu>> 提供。）
+- 测试套件现在可以解析并检查模块返回的 HTML 元素，感谢 [pup](https://github.com/EricChiang/pup) 工具。
 
-### Fixed
-- Sorting by file size now works correctly.
-  (Patch by qjqqyy <<gyula@nyirfalvi.hu>>.)
+### 修复
+- 按文件大小排序现在工作正常。（补丁由 qjqqyy <<gyula@nyirfalvi.hu>> 提供。）
 
 ## [0.4.2] - 2017-08-19
-### Changed
-- Generated HTML from the default template is now proper HTML5, and it should
-  pass validation (#52).
-- File sizes now have decimal positions when using `fancyindex_exact_size off`.
-  (Patch by Anders Trier <<anders.trier.olesen@gmail.com>>.)
-- Multiple updates to `README.rst` (Patches by Danila Vershinin
-  <<ciapnz@gmail.com>>, Iulian Onofrei, Lilian Besson, and Nick Geoghegan
-  <<nick@nickgeoghegan.net>>.)
+### 改变
+- 默认模板生成的 HTML 现在是标准的 HTML5，并且应该可以通过验证 (#52)。
+- 当使用 `fancyindex_exact_size off` 时，文件大小现在有小数位。（补丁由 Anders Trier <<anders.trier.olesen@gmail.com>> 提供。）
+- 多次更新 `README.rst`。（补丁由 Danila Vershinin <<ciapnz@gmail.com>>、Iulian Onofrei、Lilian Besson 和 Nick Geoghegan <<nick@nickgeoghegan.net>> 提供。）
 
-### Fixed
-- Sorting by file size now also works correctly for directories which contain
-  files of sizes bigger than `INT_MAX`. (#74, fix suggestion by Chris Young.)
-- Custom headers which fail to declare an UTF-8 encoding no longer cause table
-  header arrows to be rendered incorrectly by browsers (#50).
-- Fix segmentation fault when opening directories with empty files (#61, patch
-  by Catgirl <<cat@wolfgirl.org>>.)
+### 修复
+- 按文件大小排序现在也适用于包含大于 `INT_MAX` 的文件大小的目录。（#74，修复建议由 Chris Young 提供。）
+- 定制的头部未声明 UTF-8 编码不再导致浏览器错误地渲染表头箭头 (#50)。
+- 修复打开包含空文件的目录时发生段错误 (#61，补丁由 Catgirl <<cat@wolfgirl.org>> 提供。）
 
 ## [0.4.1] - 2016-08-18
-### Added
-- New `fancyindex_directories_first` configuration directive (enabled by
-  default), which allows setting whether directories are sorted before other
-  files. (Patch by Luke Zapart <<luke@zapart.org>>.)
+### 增加
+- 新的 `fancyindex_directories_first` 配置指令（默认启用），允许设置目录是否在其他文件之前排序。（补丁由 Luke Zapart <<luke@zapart.org>> 提供。）
 
-### Fixed
-- Fix index files not working when the fancyindex module is in use (#46).
-
+### 修复
+- 修复当使用 fancyindex 模块时索引文件不起作用的问题 (#46)。
 
 ## [0.4.0] - 2016-06-08
-### Added
-- The module can now be built as a [dynamic
-  module](https://www.nginx.com/resources/wiki/extending/converting/).
-  (Patch by Róbert Nagy <<vrnagy@gmail.com>>.)
-- New configuration directive `fancyindex_show_path`, which allows hiding the
-  `<h1>` header which contains the current path.
-  (Patch by Thomas P.  <<tpxp@live.fr>>.)
+### 增加
+- 模块现在可以作为 [动态模块](https://www.nginx.com/resources/wiki/extending/converting/) 构建。（补丁由 Róbert Nagy <<vrnagy@gmail.com>> 提供。）
+- 新的配置指令 `fancyindex_show_path`，允许隐藏包含当前路径的 `<h1>` 标题。（补丁由 Thomas P. <<tpxp@live.fr>> 提供。）
 
-### Changed
-- Directory and file links in listings now have a title="..." attribute.
-  (Patch by `@janglapuk` <<trusdi.agus@gmail.com>>.)
+### 改变
+- 列表中的目录和文件链接现在有 `title="..."` 属性。（补丁由 `@janglapuk` <<trusdi.agus@gmail.com>> 提供。）
 
-### Fixed
-- Fix for hung requests when the module is used along with `ngx_pagespeed`.
-  (Patch by Otto van der Schaaf <<oschaaf@we-amp.com>>.)
-
+### 修复
+- 修复与 `ngx_pagespeed` 模块一起使用时请求挂起的问题。（补丁由 Otto van der Schaaf <<oschaaf@we-amp.com>> 提供。）
 
 ## [0.3.6] - 2016-01-26
-### Added
-- New feature: Allow filtering out symbolic links using the
-  `fancyindex_hide_symlinks` configuration directive. (Idea and prototype
-  patch by Thomas Wemm.)
-- New feature: Allow specifying the format of timestamps using the
-  `fancyindex_time_format` configuration directive. (Idea suggested by Xiao
-  Meng <<novoreorx@gmail.com>>).
+### 增加
+- 新功能：允许使用 `fancyindex_hide_symlinks` 配置指令过滤掉符号链接。（想法和原型补丁由 Thomas Wemm 提供。）
+- 新功能：允许使用 `fancyindex_time_format` 配置指令指定时间戳格式。（想法由 Xiao Meng <<novoreorx@gmail.com>> 提出。）
 
-### Changed
-- Listings in top-level directories will not generate a "Parent Directory"
-  link as first element of the listing. (Patch by Thomas P.)
+### 改变
+- 顶级目录的列表将不再生成“父目录”链接作为列表的第一个元素。（补丁由 Thomas P. 提供。）
 
-### Fixed
-- Fix propagation and overriding of the `fancyindex_css_href` setting inside
-  nested locations.
-- Minor changes in the code to allow building cleanly under Windows with
-  Visual Studio 2013. (Patch by Y. Yuan <<yzwduck@gmail.com>>).
-
+### 修复
+- 修复 `fancyindex_css_href` 设置在嵌套位置内的传播和覆盖问题。
+- 对代码进行了一些小的更改，以便在 Windows 下使用 Visual Studio 2013 清洁构建。（补丁由 Y. Yuan <<yzwduck@gmail.com>> 提供。）
 
 ## [0.3.5] - 2015-02-19
-### Added
-- New feature: Allow setting the default sort criterion using the
-  `fancyindex_default_sort` configuration directive. (Patch by
-  Алексей Урбанский).
-- New feature: Allow changing the maximum length of file names, using
-  the `fancyindex_name_length` configuration directive. (Patch by
-  Martin Herkt).
+### 增加
+- 新功能：允许使用 `fancyindex_default_sort` 配置指令设置默认排序标准。（补丁由 Алексей Урбанский 提供。）
+- 新功能：允许使用 `fancyindex_name_length` 配置指令更改文件名的最大长度。（补丁由 Martin Herkt 提供。）
 
-### Changed
-- Renames `NEWS.rst` to `CHANGELOG.md`, which follows the recommendations
-	from [Keep a Change Log](http://keepachangelog.com/).
-- Configuring Nginx without the `http_addition_module` will generate a
-  warning during configuration, as it is needed for the `fancyindex_footer`
-  and `fancyindex_header` directives.
-
+### 改变
+- 将 `NEWS.rst` 重命名为 `CHANGELOG.md`，遵循 [Keep a Change Log](http://keepachangelog.com/) 的推荐。
+- 如果没有 `http_addition_module` 配置 Nginx，将在配置期间生成警告，因为 `fancyindex_footer` 和 `fancyindex_header` 指令需要它。
 
 ## [0.3.4] - 2014-09-03
+### 增加
+- 生成的 HTML 中定义了视口，这在移动设备上表现更好。
 
-### Added
-- Viewport is now defined in the generated HTML, which works better
-  for mobile devices.
-
-### Changed
-- Even-odd row styling moved to the CSS using :nth-child(). This
-  makes the HTML served to clients smaller.
-
+### 改变
+- 使用 :nth-child() 将偶数-奇数行样式移至 CSS，这使得客户端接收的 HTML 更小。
 
 ## [0.3.3] - 2013-10-25
-
-### Added
-- New feature: table headers in the default template are now clickable
-  to set the sorting criteria and direction of the index entries.
-  (https://github.com/aperezdc/ngx-fancyindex/issues/7)
-
+### 增加
+- 新功能：默认模板中的表头现在可点击以设置索引条目的排序标准和方向。
+  （https://github.com/aperezdc/ngx-fancyindex/issues/7）
 
 ## [0.3.2] - 2013-06-05
-
-### Fixed
-- Solved a bug that would leave certain clients stalled forever.
-- Improved handling of subrequests for non-builtin headers/footers.
-
+### 修复
+- 解决某些客户端会永远停滞的 bug。
+- 改进非内置头部/尾部的子请求处理。
 
 ## [0.3.1] - 2011-04-04
+### 增加
+- `NEWS.rst` 文件，用作变更日志。
 
-### Added
-- `NEWS.rst` file, to act as change log.
-
-
-[Unreleased]: https://github.com/aperezdc/ngx-fancyindex/compare/v0.5.2...HEAD
+[未发布]: https://github.com/aperezdc/ngx-fancyindex/compare/v0.5.2...HEAD
 [0.5.2]: https://github.com/aperezdc/ngx-fancyindex/compare/v0.5.1...v0.5.2
 [0.5.1]: https://github.com/aperezdc/ngx-fancyindex/compare/v0.5.0...v0.5.1
 [0.5.0]: https://github.com/aperezdc/ngx-fancyindex/compare/v0.4.4...v0.5.0

@@ -1,0 +1,55 @@
+name: "Test modules"
+
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+jobs:
+  deb:
+    name: "Nginx-modules"
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+        
+      - name: Update apt
+        run: sudo apt-get update
+
+      - name: Install build-tool
+        run: |
+         sudo apt-get install -y \
+         libssl-dev \
+         cmake \
+         lsb-release \
+         libxml2-utils \
+         xsltproc \
+         devscripts \
+         quilt \
+         git \
+         build-essential \
+         ca-certificates \
+         zlib1g-dev \
+         libpcre3 \
+         libpcre3-dev \
+         tar \
+         unzip \
+         libssl-dev \
+         libunwind-dev \
+         pkg-config \
+         make \
+         cmake \
+         golang \
+         gcc \
+         git \
+         wget
+         
+      - name: wget repo
+        run: |
+          wget -c https://nginx.org/download/nginx-1.27.3.tar.gz && \
+          tar -xvf nginx-1.27.3.tar.gz && \
+          cd nginx-1.27.3 && \
+          ./configure --add-module=../ && \
+          make

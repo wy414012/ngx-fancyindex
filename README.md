@@ -227,4 +227,9 @@ location / {
 - `%w`: 星期几的数字，范围 0 到 6，周一为 0。
 - `%y`: 不带世纪的年份数字（范围 00 到 99）。
 - `%Y`: 带世纪的年份数字。
-:::
+
+### 更新模板指令
+- 修改`template.html`后生成新的头文件
+```bash
+awk -f template.awk template.html > template.h
+```
